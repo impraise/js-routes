@@ -19,6 +19,7 @@ class JsRoutes
     url_links: nil,
     camel_case: false,
     default_url_options: {},
+    custom_root: nil,
     compact: false
   }
 
@@ -93,6 +94,7 @@ class JsRoutes
 
   def generate
     js = File.read(File.dirname(__FILE__) + "/routes.js")
+    js.gsub!("CUSTOM_ROOT", @options[:custom_root] || 'null')
     js.gsub!("NAMESPACE", @options[:namespace])
     js.gsub!("DEFAULT_URL_OPTIONS", json(@options[:default_url_options].merge(deprecated_default_format)))
     js.gsub!("PREFIX", @options[:prefix] || "")

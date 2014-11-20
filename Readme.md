@@ -55,6 +55,7 @@ Available options:
   * The regexp applies only to the name before the `_path` suffix, eg: you want to match exactly `settings_path`, the regexp should be `/^settings$/`
 * `namespace` - global object used to access routes.
   * Supports nested namespace like `MyProject.routes`
+  * Can be an empty string, to place routes directly on the root object (version >= 0.9.10)
   * Default: `Routes`
 * `prefix` - String representing a url path to prepend to all paths.
   * Example: `http://yourdomain.com`. This will cause route helpers to generate full path only.
@@ -67,6 +68,7 @@ Available options:
 * `compact` (version > 0.9.9) - Remove `_path` suffix in path routes(`*_url` routes stay untouched if they were enabled)
   * Default: false
   * Sample route call when option is set to true: Routes.users() => `/users`
+* `custom_root` (version >= 0.9.10) - Override the root object on which the routes are namespaced. (see #121) 
 
 ### Very Advanced Setup
 
